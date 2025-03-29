@@ -39,10 +39,10 @@ int main() {
     for (i = 0; i < n; i++) {
         std::stringstream ss(querys[i]);
 
-        std::getline(ss, lectura, ' ');
+        ss >> lectura;
         std::string name = lectura;
 
-        std::getline(ss, lectura, ' ');
+        ss >> lectura;
         int dineroGastado = std::stoi(lectura);
 
         if (dineroGastado < 0 || dineroGastado >= 2000)
@@ -55,7 +55,7 @@ int main() {
             }
         }
 
-        std::getline(ss, lectura, ' ');
+        ss >> lectura;
         int count = std::stoi(lectura);
         int dineroGanado = 0;
 
