@@ -4,12 +4,38 @@
 
 struct CASE
 {
-    int H, U, D, F;
-    
-    bool success = false;
-    int day = 0;
+    float H, U, D, F;
 };
 
+std::string calcSol(CASE inputCase) {
+    int day = 0;
+    float position = 0.0;
+
+    float wellHeight = 1.0 * inputCase.H;
+    float climbDist = 1.0 * inputCase.U;
+    float dropNight = 1.0 * inputCase.D;
+    float fatigueDistance = ((1.0 * inputCase.F) * climbDist) / 100;
+
+    while (true) {
+        if (position < 0)
+            return ("failure on day " + std::to_string(day));
+        
+        day++;
+        position += climbDist;
+
+        if (position > wellHeight)
+            return ("success on day " + std::to_string(day));
+
+        climbDist -= fatigueDistance;
+
+        if (climbDist < 0.0)
+            climbDist = 0.0;
+
+        position -= dropNight;
+    }
+
+    return "";
+}
 
 int main()
 {
@@ -35,6 +61,7 @@ int main()
     }
 
     CASE cases[n];
+    std::string results[n];
 
     std::stringstream ss(txt);
 
@@ -53,7 +80,11 @@ int main()
         i++;
     }
 
-    //std::cout << n << std::endl;
+    for (i = 0; i < n; i++) 
+        results[i] = calcSol(cases[i]);
+
+    for (i = 0; i < n; i++)
+        std::cout << results[i] << std::endl;
 
     return 0;
 }
