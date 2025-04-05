@@ -8,7 +8,8 @@ struct PERSON
     int balance = 0;
 };
 
-int main() {
+int main()
+{
     int n, i = 0;
     std::string names, lectura;
 
@@ -23,7 +24,8 @@ int main() {
     std::stringstream ss(names);
     PERSON people[n];
 
-    while (std::getline(ss, lectura, ' ')) {
+    while (std::getline(ss, lectura, ' '))
+    {
         if (lectura.length() > 12)
             return 1;
 
@@ -36,7 +38,8 @@ int main() {
     for (i = 0; i < n; i++)
         std::getline(std::cin, querys[i]);
 
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++)
+    {
         std::stringstream ss(querys[i]);
 
         ss >> lectura;
@@ -48,8 +51,10 @@ int main() {
         if (dineroGastado < 0 || dineroGastado >= 2000)
             return 1;
 
-        for (int j = 0; j < n; j++) {
-            if (people[j].name == name) {
+        for (int j = 0; j < n; j++)
+        {
+            if (people[j].name == name)
+            {
                 people[j].balance -= dineroGastado;
                 j = n;
             }
@@ -62,11 +67,21 @@ int main() {
         if (count != 0)
             dineroGanado = dineroGastado / count;
 
-        if (count > 0 && dineroGanado > 0) {
+        if (count > 0 && dineroGastado % count != 0)
+        {
+            for (int j = 0; j < n; j++)
+                if (people[j].name == name)
+                    people[j].balance += dineroGastado % count;
+        }
+
+        if (count > 0 && dineroGanado > 0)
+        {
             while (std::getline(ss, lectura, ' '))
             {
-                for (int j = 0; j < n; j++) {
-                    if (people[j].name == lectura) {
+                for (int j = 0; j < n; j++)
+                {
+                    if (people[j].name == lectura)
+                    {
                         people[j].balance += dineroGanado;
                     }
                 }
