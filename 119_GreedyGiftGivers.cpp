@@ -62,6 +62,11 @@ int main() {
         if (count != 0)
             dineroGanado = dineroGastado / count;
 
+        if (dineroGastado % count != 0)
+            for (int j = 0; j < n; j++)
+                if (people[j].name == name)
+                    people[j].balance += dineroGastado % count;
+
         if (count > 0 && dineroGanado > 0) {
             while (std::getline(ss, lectura, ' '))
             {

@@ -23,7 +23,7 @@ std::string calcSol(CASE inputCase) {
         day++;
         position += climbDist;
 
-        if (position > wellHeight)
+        if (position >   wellHeight)
             return ("success on day " + std::to_string(day));
 
         climbDist -= fatigueDistance;

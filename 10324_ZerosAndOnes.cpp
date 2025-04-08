@@ -1,8 +1,13 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
 
-int zeroOne(std::string txt, std::string query) {
+struct RESULTS {
+    std::vector<std::string> results;
+};
+
+bool zeroOne(std::string txt, std::string query) {
     int indexes[2];
     int zeros = 0, ones = 0, temp, i = 0;
 
@@ -27,17 +32,18 @@ int zeroOne(std::string txt, std::string query) {
             ones++;
     }
 
-    if (zeros == ones)
-        return 1;
-    else if (zeros == 0 && ones != 0)
-        return 1;
-    else if (zeros != 0 && ones == 0)
-        return 1;
-
-    return 0;
+    return (zeros == ones) || (zeros == 0) || (ones == 0);
 }
 
 int main() {
+    int nCases = 0;
+    std::string input;
+
+    while (true) {
+        std::getline(std::cin, input);
+    }
+
+    /*
     std::string txt;
     int n;
 
@@ -52,21 +58,18 @@ int main() {
     if (n < 0)
         return 1;
 
-    std::string querys[n];
-    int resultados[n];
+    std::vector<std::string> querys(n);
+    RESULTS results_struct;
 
     for (int i = 0; i < n; i++)
         std::getline(std::cin, querys[i]);
 
     for (int i = 0; i < n; i++)
-        resultados[i] = zeroOne(txt, querys[i]);
+        results_struct.results.push_back(zeroOne(txt, querys[i]) ? "Yes" : "No");
 
-    for (int i = 0; i < n; i++) {
-        if (resultados[i] == 0)
-            std::cout << "No" << std::endl;
-        else
-            std::cout << "Yes" << std::endl;
-    }
+    for (const auto &res : results_struct.results)
+        std::cout << res << std::endl;
+    */
 
     return 0;
 }
