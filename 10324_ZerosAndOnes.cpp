@@ -36,14 +36,6 @@ bool zeroOne(std::string txt, std::string query) {
 }
 
 int main() {
-    int nCases = 0;
-    std::string input;
-
-    while (true) {
-        std::getline(std::cin, input);
-    }
-
-    /*
     std::string txt;
     int n;
 
@@ -69,7 +61,6 @@ int main() {
 
     for (const auto &res : results_struct.results)
         std::cout << res << std::endl;
-    */
 
     return 0;
 }
